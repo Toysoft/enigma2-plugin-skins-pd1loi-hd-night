@@ -178,9 +178,9 @@
 <screen name="ImageDownLoaderFiles" position="fill" title="Sat-Lodge Panel" flags="wfNoBorder">
   <panel name="PigTemplate" />
   <!--
-    <ePixmap pixmap="CinoGriPLiFhd/buttons/red.png" position="192,1032" size="34,34" alphatest="blend" />
-    <ePixmap pixmap="CinoGriPLiFhd/buttons/green.png" position="628,1032" size="34,34" alphatest="blend" />  
-    <ePixmap pixmap="CinoGriPLiFhd/buttons/blue.png" position="1363,1032" size="34,34" alphatest="blend" />  
+    <ePixmap pixmap="Pd1loi-HD-night/buttons/red.png" position="192,1032" size="34,34" alphatest="blend" />
+    <ePixmap pixmap="Pd1loi-HD-night/buttons/green.png" position="628,1032" size="34,34" alphatest="blend" />  
+    <ePixmap pixmap="Pd1loi-HD-night/buttons/blue.png" position="1363,1032" size="34,34" alphatest="blend" />  
     <widget name="key_red" position="242,1030" size="370,38" zPosition="1" transparent="1" font="Regular;34" halign="left" foregroundColor="red" />
     <widget name="key_green" position="678,1030" size="370,38" zPosition="1" transparent="1" font="Regular;34" halign="left" foregroundColor="green" />
     <widget name="key_blue" position="1410,1030" size="370,38" zPosition="1" transparent="1" font="Regular;34" halign="left" foregroundColor="blue" />
