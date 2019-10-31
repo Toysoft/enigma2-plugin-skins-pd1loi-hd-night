@@ -301,7 +301,20 @@
   <ePixmap pixmap="skin_default/buttons/key_menu.png" alphatest="blend" position="82,1031" size="52,38" />
   <ePixmap pixmap="Pd1loi-HD-night/border/smallshadowline.png" position="0,1020" size="1920,3" />  
   <widget name="info" position="4,731" zPosition="4" size="773,92" font="Regular;32" foregroundColor="unffff00" transparent="1" halign="center" valign="center" /> 
-   
+ </screen> 
+
+<screen name="PluginMultim" position="fill" title="Sat-Lodge Panel" flags="wfNoBorder">
+  <panel name="PigTemplate" />
+  <panel name="ButtonTemplate" />
+  <widget name="title" position="354,1096" zPosition="3" size="908,66" font="Regular;40" foregroundColor="#ffcc33" backgroundColor="black" transparent="1" halign="center" />
+  <widget name="version" position="1591,1100" zPosition="3" size="324,50" font="Regular;30" backgroundColor="background" transparent="1" foregroundColor="#ffffff" halign="left" />
+  <widget name="maintener" position="1266,1101" zPosition="3" size="324,50" font="Regular;30" backgroundColor="background" transparent="1" foregroundColor="#ffffff" halign="right" />
+    
+  <widget name="text" zPosition="2" position="780,105" size="1137,902" itemHeight="50" font="Regular; 34" selectionPixmap="Pd1loi-HD-night/buttons/sel2.png" />   
+  <ePixmap pixmap="skin_default/buttons/key_menu.png" alphatest="blend" position="82,1031" size="52,38" />
+  <ePixmap pixmap="Pd1loi-HD-night/border/smallshadowline.png" position="0,1020" size="1920,3" />  
+  <widget name="info" position="4,731" zPosition="4" size="773,92" font="Regular;32" foregroundColor="#F0F0F0" transparent="1" halign="center" valign="center" /> 
+               
 </screen> 
 
 <screen name="PluginIptv" position="fill" title="Sat-Lodge Panel" flags="wfNoBorder">
