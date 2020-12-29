@@ -52,22 +52,21 @@
 		<widget name="text" position="30,535" size="725,300" foregroundColor="unffff00" backgroundColor="secondBG" transparent="1" zPosition="1" font="Regular;34" valign="top" halign="left" />
                 </screen>
 
-	<screen name="SelectionTemplate">
-		<panel name="BasicTemplate"/>
-		<widget source="session.VideoPicture" render="Pig" position="30,117" size="719,402" backgroundColor="transparent" zPosition="1"/>
-		<ePixmap pixmap="Pd1loi-HD-night/border/chframe1.png" position="24,110" size="730,415" alphatest="blend" />
-		<widget source="session.CurrentService" render="Label" position="32,120" size="715,30" zPosition="1" foregroundColor="unffff00" transparent="1" font="Regular;28"
-		borderColor="black" borderWidth="2" noWrap="1" valign="center" halign="center">
-			<convert type="ServiceName">Name</convert>
-		</widget>
-	</screen>
+<screen name="SelectionTemplate">
+  <panel name="BasicTemplate" />
+  <widget source="session.VideoPicture" render="Pig" position="31,118" size="720,405" backgroundColor="transparent" zPosition="1" />
+  <ePixmap pixmap="Pd1loi-HD-night/border/chframe1.png" position="24,110" size="734,420" alphatest="blend" />
+  <widget source="session.CurrentService" render="Label" position="32,119" size="718,30" zPosition="1" foregroundColor="unffff00" transparent="1" font="Regular0; 27" borderColor="black" borderWidth="2" noWrap="1" valign="center" halign="center">
+  <convert type="ServiceName">Name</convert>
+  </widget>
+</screen>
 	
 
 
 	<screen name="PigTemplate">
 		<panel name="SelectionTemplate"/>
 		<ePixmap pixmap="Pd1loi-HD-night/logos/pd1loi.png" position="30,967" size="320,40" alphatest="on"/>
-		<!--daimon-->
+				<!--daimon-->
         <ePixmap pixmap="Pd1loi-HD-night/logos/sllogo.png" position="365,855" size="150,148" alphatest="on" />   
 	</screen>
 
@@ -78,6 +77,22 @@
 
 	<screen name="MenuTemplate">
 		<panel name="PigTemplate"/>
+        <panel name="ButtonTemplate"/>
+  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
+    <convert type="ClockToText">Format:%H</convert>
+  </widget>
+  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
+    <convert type="ClockToText">Format:%M</convert>
+  </widget>
+  <widget backgroundColor="background" font="Regular; 26" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
+    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
+  </widget>
+  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
+    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
+  </widget>
+  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
+    <convert type="MSNWeather">temperature_current</convert>
+  </widget>
           <widget source="menu" render="Listbox" selectionPixmap="Pd1loi-HD-night/buttons/sel6.png" position="780,105" size="1110,900" font="Regular;36" transparent="1" scrollbarMode="showOnDemand">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (75,15),size = (1035,45),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
@@ -87,7 +102,7 @@
 			</convert>
 		</widget>
 	</screen>
-      <!--daimon-->    
+ <!--daimon-->    
     <screen name="slLogos">
         <ePixmap pixmap="Pd1loi-HD-night/logos/sllogo.png" position="365,855" size="150,148" alphatest="on" />
 	</screen>  
@@ -228,6 +243,16 @@
 		<ePixmap pixmap="skin_default/buttons/key_1.png" alphatest="blend" position="30,1031" size="52,38"/>
 	</screen>
 
+	<screen name="KeyHelpLTemplate">
+		<ePixmap pixmap="skin_default/buttons/key_help.png" alphatest="blend" position="30,1031" size="52,38"/>
+	</screen>
+	<screen name="KeyHelpMTemplate">
+		<ePixmap pixmap="skin_default/buttons/key_help.png" alphatest="blend" position="82,1031" size="52,38"/>
+	</screen>
+	<screen name="KeyHelpRTemplate">
+		<ePixmap pixmap="skin_default/buttons/key_help.png" alphatest="blend" position="135,1031" size="52,38"/>
+	</screen>
+
 	<screen name="KeyTextTemplate">
 		<ePixmap pixmap="skin_default/buttons/key_text.png" alphatest="blend" position="619,1031" size="52,38"/>
 	</screen>
@@ -289,18 +314,21 @@
 
  <!-- Infobar template -->
 <screen name="InfoBarTemplate" size="1913,1080">
-  <widget render="PDVideoSize" source="session.CurrentService" position="1708,940" size="170,30" backgroundColor="secondBG" font="Regular;29" foregroundColor="yellow" halign="center" transparent="1" zPosition="1" />
-  <widget backgroundColor="transparent" font="LiberationSans-Regular; 20" foregroundColor="unffff00" halign="left" noWrap="1" position="387,859" size="450,26" render="Label" borderWidth="2" source="session.CurrentService" transparent="1" valign="top" zPosition="10">
+ <widget source="session.CurrentService" render="Pixmap" pixmap="Pd1loi-HD-night/buttons/stream.png" position="1204,902" size="30,30" zPosition="3" alphatest="on">
+    <convert type="ClientsStreaming" />
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget render="VideoSize" source="session.CurrentService" position="1710,940" size="170,30" backgroundColor="secondBG" font="Regular;30" foregroundColor="unffff00" halign="center" transparent="1" zPosition="1" />
+  <widget backgroundColor="secondBG" font="LiberationSans-Regular; 20" foregroundColor="unc6e0f3" halign="left" noWrap="1" position="390,858" size="450,26" render="Label" borderWidth="2" source="session.CurrentService" transparent="1" valign="top" zPosition="10">
     <convert type="ServiceName">Provider</convert>
   </widget>
-  <eLabel backgroundColor="secondBG" font="OpenSans; 25" foregroundColor="unff0000" halign="center" position="1778,940" size="30,30" text="X" transparent="1" />
   <widget source="session.Event_Now" render="Label" position="1180,984" size="300,33" font="Regular;30" halign="right" foregroundColor="darkgrey" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
   </widget>
   <widget source="session.Event_Next" render="Label" position="1180,1029" size="300,33" font="Regular;30" halign="right" foregroundColor="darkgrey" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
   </widget>
-  <widget backgroundColor="background" font="Regular; 32" foregroundColor="green" halign="right" position="990,855" render="Label" size="370,35" source="session.MSNWeather" transparent="1" zPosition="1">
+  <widget backgroundColor="background" font="Regular; 32" foregroundColor="green" halign="center" valign="bottom" position="735,825" render="Label" size="370,70" source="session.MSNWeather" transparent="1" zPosition="1">
     <convert type="MSNWeather">city</convert>
   </widget>
   <ePixmap name="new ePixmap" position="1705,1015" size="180,8" pixmap="Pd1loi-HD-night/infobar/snron11.png" zPosition="1" />
@@ -310,9 +338,17 @@
   <widget font="Regular; 20" halign="left" noWrap="1" position="30,824" render="Label" size="400,26" source="session.CurrentService" transparent="1" zPosition="1" backgroundColor="background" foregroundColor="grey">
     <convert type="pliCamd">Camd</convert>
   </widget>
-  <widget foregroundColor="white" backgroundColor="background" font="Regular2; 20" render="Label" position="1379,839" size="70,54" source="session.MSNWeather" zPosition="1" halign="center" transparent="1">
-    <convert type="MSNWeather">temperature_heigh_low,current</convert>
-  </widget>
+<eLabel name="new eLabel" position="1360,851" size="55,30" font="Regular; 20" transparent="1" halign="left" text="max." zPosition="3" foregroundColor="grey" valign="top" />
+<widget noWrap="1" backgroundColor="background" font="Regular; 22" render="Label" position="1408,851" size="80,30" source="session.MSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="unffffff" valign="top">
+  <convert type="MSNWeather">temperature_high,day1</convert>
+</widget>
+<eLabel name="new eLabel" position="1360,871" size="55,30" font="Regular; 20" transparent="1" halign="left" text="min." zPosition="3" foregroundColor="grey" valign="bottom" />
+<widget noWrap="1" backgroundColor="background" font="Regular; 22" render="Label" position="1408,871" size="80,30" source="session.MSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="unffffff" valign="bottom">
+  <convert type="MSNWeather">temperature_low,day1</convert>
+</widget>
+<widget noWrap="1" backgroundColor="background" font="Regular; 32" render="Label" position="1057,857" size="300,35" source="session.MSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="unffffff">
+  <convert type="MSNWeather">temperature_text,current</convert>
+</widget>
   <widget backgroundColor="background" font="Regular2; 30" foregroundColor="unffff00" halign="center" position="1463,855" render="Label" size="80,35" source="session.MSNWeather" transparent="1" zPosition="1">
     <convert type="MSNWeather">temperature_current</convert>
   </widget>
@@ -345,7 +381,7 @@
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText">Format:%H:%M</convert>
   </widget>
-  <widget source="session.Event_Now" render="Label" position="387,978" size="1072,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="yellow" noWrap="1" font="Regular;36" halign="left">
+  <widget source="session.Event_Now" render="PDEmptyEpg" position="387,978" size="1072,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="yellow" noWrap="1" font="Regular;36" halign="left">
     <convert type="EventName">Name</convert>
   </widget>
   <widget source="session.Event_Now" render="Label" position="1430,978" size="210,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="unffff00" font="Regular;36" halign="right">
@@ -356,7 +392,7 @@
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText">Format:%H:%M</convert>
   </widget>
-  <widget source="session.Event_Next" render="Label" position="387,1023" size="1072,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="unc6e0f3" noWrap="1" font="Regular;36" halign="left">
+  <widget source="session.Event_Next" render="PDEmptyEpg" position="387,1023" size="1072,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="unc6e0f3" noWrap="1" font="Regular;36" halign="left">
     <convert type="EventName">Name</convert>
   </widget>
   <widget source="session.Event_Next" render="Label" position="1430,1023" size="210,45" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="unc6e0f3" font="Regular;36" halign="right">
@@ -410,13 +446,13 @@
     <convert type="ClientsStreaming" />
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget source="session.FrontendStatus" render="Label" position="1735,976" size="112,33" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="foreground" font="Regular;28" halign="center">
+  <widget source="session.FrontendStatus" render="Label" position="1710,976" size="170,33" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="foreground" font="Regular;28" halign="center">
     <convert type="FrontendInfo">SNRdB</convert>
   </widget>
-  <widget source="session.FrontendInfo" render="Label" position="1670,901" size="200,30" borderWidth="1" borderColor="black" zPosition="1" backgroundColor="transpBlack" transparent="1" halign="left" font="Regular;30">
+  <widget source="session.FrontendInfo" render="Label" position="1648,904" size="200,30" borderWidth="1" borderColor="black" zPosition="1" backgroundColor="transpBlack" transparent="1" halign="left" font="Regular;30">
     <convert type="FrontendInfo">STRING</convert>
   </widget>
-  <widget source="session.CurrentService" render="Label" position="1712,1030" size="165,33" backgroundColor="secondBG" transparent="1" zPosition="1" text="DVB-S" font="Regular;28" halign="center">
+  <widget source="session.CurrentService" render="Label" position="1710,1030" size="170,33" backgroundColor="secondBG" transparent="1" zPosition="1" text="DVB-S" font="Regular;28" halign="center">
     <convert type="ServiceOrbitalPosition" />
   </widget>
   <!--<ePixmap pixmap="Pd1loi-HD-night/icons/icon_update_off.png" position="90,52" size="30,30" zPosition="0" alphatest="blend"/>-->
