@@ -15,15 +15,14 @@
 	<fonts>
      <font filename="/usr/share/fonts/nmsbd.ttf" name="Emu" replacement="0" scale="100" />
      <font filename="/usr/share/fonts/nmsbd.ttf" name="Menu" replacement="0" scale="102" />
-		 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/Segoe UI.ttf" name="Regular1" scale="100"/>
-		 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/segoeuil.ttf" name="Regular0" scale="100"/>
-		 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/Segoe UI Italic.ttf" name="Crs" scale="100"/>
-		 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/ks.ttf" name="OLED" scale="100"/>
-		 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/ae_sindibad.ttf" name="ae_sindibad" scale="100" />
+	 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/Segoe UI.ttf" name="Regular1" scale="100"/>
+	 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/segoeuil.ttf" name="Regular0" scale="100"/>
+	 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/Segoe UI Italic.ttf" name="Crs" scale="100"/>
+	 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/ks.ttf" name="OLED" scale="100"/>
+	 <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/ae_sindibad.ttf" name="ae_sindibad" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/NotoSans_Regular.ttf" name="Regular2" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/LiberationSans-Italic.ttf" name="Crs2" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/LiberationSans-Regular.ttf" name="Regular" scale="100" />
-     <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/LiberationSans-Regular.ttf" name="LiberationSans-Regular" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/hdi.ttf" name="Crs3" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/mssdr-digitali.ttf" name="Digital" scale="100" />
      <font filename="/usr/share/enigma2/Pd1loi-HD-night/fonts/Time.ttf" name="Time" scale="100" />
@@ -77,7 +76,9 @@
     <color name="background90" value="#90000000" />             
     <color name="background" value="#00000000" />
     <color name="backtop" value="#00080808" />
-    <color name="backtopt" value="#00080808" />
+    <color name="backtopt" value="#00080808" />   
+	<color name="ltbluette" value="#007fcfff" />
+    <color name="ltbluette2" value="#00229eff" />
     <color name="black" value="#00000000" />
     <color name="blue" value="#00879ce1" />
     <color name="bluesoft" value="#00b0c2f2" />
@@ -415,6 +416,7 @@
   </widget>
 </screen>
 
+
 	<!-- InfoBars -->
 
 	<screen name="InfoBar" title="InfoBar" position="fill" backgroundColor="transparent" flags="wfNoBorder">
@@ -436,9 +438,12 @@
   <widget source="session.Event_Now" render="Label" position="645,68" size="300,33" font="Regular;30" halign="right" foregroundColor="blue" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
   </widget>
-  <widget source="session.Event_Now" render="Label" position="30,110" size="915,710" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unffffff">
-    <convert type="EventName">FullDescription</convert>
-  </widget>
+<widget source="session.Event_Now" render="PDRunningText" position="30,110" size="915,710" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unffffff" options="movetype=running,startpoint=0,direction=top,steptime=60,repeat=5,startdelay=7000,wrap">
+  <convert type="EventName">FullDescription</convert>
+</widget>
+<widget source="session.Event_Next" render="PDRunningText" position="975,110" size="915,710" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unffffff" options="movetype=running,startpoint=0,direction=top,steptime=60,repeat=5,startdelay=7000,wrap">
+  <convert type="EventName">FullDescription</convert>
+</widget>
   <widget source="session.Event_Next" render="Label" position="975,20" size="915,39" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="secondFG" noWrap="1" font="Regular;33" halign="left">
     <convert type="EventName">NameNext</convert>
   </widget>
@@ -448,10 +453,7 @@
   <widget source="session.Event_Next" render="Label" position="1590,68" size="300,33" font="Regular;30" halign="right" foregroundColor="blue" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
   </widget>
-  <widget source="session.Event_Next" render="Label" position="975,110" size="915,710" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unffffff">
-    <convert type="EventName">FullDescription</convert>
-  </widget>
-  <panel name="InfoBarTemplate" />
+  <panel name="InfoBarTemplate"/>
 </screen>
 
 <!--SecondInfoBar-->
@@ -487,9 +489,13 @@
   <widget source="session.Event_Now" render="Label" position="645,210" size="300,33" font="Regular;30" halign="right" foregroundColor="orange" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
   </widget>
-  <widget source="session.Event_Now" render="Label" position="30,250" size="915,570" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unc6e0f3">
-    <convert type="EventName">FullDescription</convert>
-  </widget>
+<widget source="session.Event_Now" render="PDRunningText" position="30,250" size="915,570" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unc6e0f3" options="movetype=running,startpoint=0,direction=top,steptime=60,repeat=5,startdelay=7000,wrap">
+  <convert type="EventName">FullDescription</convert>
+</widget>
+<widget source="session.Event_Next" render="PDRunningText" position="975,250" size="915,570" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unc6e0f3" options="movetype=running,startpoint=0,direction=top,steptime=60,repeat=5,startdelay=7000,wrap">
+  <convert type="EventName">FullDescription</convert>
+  <panel name="InfoBarTemplate" />
+</widget>
   <widget source="session.Event_Next" render="Label" position="975,162" size="915,39" backgroundColor="secondBG" transparent="1" zPosition="1" foregroundColor="secondFG" noWrap="1" font="Regular;33" halign="left">
     <convert type="EventName">NameNext</convert>
   </widget>
@@ -498,10 +504,6 @@
   </widget>
   <widget source="session.Event_Next" render="Label" position="1590,210" size="300,33" font="Regular;30" halign="right" foregroundColor="orange" backgroundColor="secondBG" transparent="1" zPosition="1">
     <convert type="EventName">SmallRating</convert>
-  </widget>
-  <widget source="session.Event_Next" render="Label" position="975,250" size="915,570" font="Regular;38" halign="left" zPosition="1" transparent="1" foregroundColor="unc6e0f3">
-    <convert type="EventName">FullDescription</convert>
-	<panel name="InfoBarTemplate" />
   </widget>
  <panel name="InfoBarTemplate" /> 
 </screen>
@@ -532,16 +534,16 @@
 
 	<!-- DVD Player Infobar -->
 
-<screen name="DVDPlayer" title="InfoBar" position="148,750" size="1620,352" backgroundColor="transparent" flags="wfNoBorder">
-  <panel name="PlayerTemplate" />
-  <widget name="chapterLabel" position="270,150" size="570,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3" />
-  <eLabel text="Audio:	" position="270,202" size="135,52" backgroundColor="secondBG" transparent="1" font="Regular;30" borderColor="black" borderWidth="2" valign="center" halign="left" />
-  <widget name="audioLabel" position="405,202" size="435,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3" />
-  <eLabel text="Subtitle:	" position="270,255" size="135,52" backgroundColor="secondBG" transparent="1" borderColor="black" borderWidth="2" font="Regular;30" valign="center" halign="left" />
-  <widget name="subtitleLabel" position="405,255" size="435,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3" />
-  <widget name="anglePix" position="960,192" size="39,24" pixmap="skin_default/icons/icon_view.png" zPosition="3" alphatest="on" />
-  <widget name="angleLabel" position="1020,183" size="300,33" font="Regular;31" backgroundColor="black" zPosition="3" transparent="1" />
-</screen>
+	<screen name="DVDPlayer" title="InfoBar" position="150,67" size="1620,352" backgroundColor="transparent" flags="wfNoBorder">
+		<panel name="PlayerTemplate"/>
+		<widget name="chapterLabel" position="270,150" size="570,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3"/>
+		<eLabel text="Audio:	" position="270,202" size="135,52" backgroundColor="secondBG" transparent="1" font="Regular;30" borderColor="black" borderWidth="2" valign="center" halign="left"/>
+		<widget name="audioLabel" position="405,202" size="435,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3"/>
+		<eLabel text="Subtitle:	" position="270,255" size="135,52" backgroundColor="secondBG" transparent="1" borderColor="black" borderWidth="2" font="Regular;30" valign="center" halign="left"/>
+		<widget name="subtitleLabel" position="405,255" size="435,52" font="Regular;30" halign="left" valign="center" noWrap="1" borderColor="black" borderWidth="2" backgroundColor="transparent" zPosition="3"/>
+		<widget name="anglePix" position="960,192" size="39,24" pixmap="skin_default/icons/icon_view.png" zPosition="3" alphatest="on"/>
+		<widget name="angleLabel" position="1020,183" size="300,33" font="Regular;31" backgroundColor="black" zPosition="3" transparent="1"/>
+	</screen>
 
 	<screen name="ChapterZap" position="center,center" size="360,82" title="Chapter" flags="wfNoBorder">
 		<ePixmap alphatest="off" pixmap="Pd1loi-HD-night/infobar/bl80.png" position="0,0" size="360,82" zPosition="-1"/>
@@ -555,7 +557,7 @@
   <panel name="SelectionTemplate" />
   <panel name="KeyInfoTemplate" />
   <panel name="KeyMenuInfoTemplate" />
-  <widget name="list" position="780,108" size="1110,900" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" itemHeight="50" transparent="1" serviceNumberFont="Regular;37" scrollbarMode="showOnDemand" serviceInfoFont="Crs;37" serviceNameFont="Regular;37" serviceItemHeight="50" picServiceEventProgressbar="PLi-FullNightHD/window/progress.png" progressbarHeight="15" progressBarWidth="70" progressPercentWidth="80" colorEventProgressbarBorder="un33333a" fieldMargins="15" nonplayableMargins="15" colorEventProgressbarBorderSelected="darkgrey" colorServiceDescription="#4FFF86" progressbarBorderWidth="3" foregroundColorServiceNotAvail="#656565" backgroundColorMarked="#656565" colorServiceDescriptionFallback="#4FFF86" colorServiceDescriptionSelectedFallback="#4FFF86" colorFallbackItem="#aaaaaa" colorServiceSelectedFallback="#4FFF86" />
+  <widget name="list" position="780,108" size="1110,900" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" itemHeight="50" transparent="1" serviceNumberFont="Regular;37" scrollbarMode="showOnDemand" serviceNameFont="Regular;38" serviceInfoFont="Crs;35" serviceItemHeight="50" picServiceEventProgressbar="PLi-FullNightHD/window/progress.png" progressbarHeight="15" progressBarWidth="70" progressPercentWidth="80" colorEventProgressbarBorder="un33333a" fieldMargins="15" nonplayableMargins="15" colorEventProgressbarBorderSelected="darkgrey" colorServiceDescription="#4FFF86" progressbarBorderWidth="3" foregroundColorServiceNotAvail="#999999" backgroundColorMarked="#656565" colorServiceDescriptionFallback="#4FFF86" colorServiceDescriptionSelectedFallback="#4FFF86" colorFallbackItem="#aaaaaa" colorServiceSelectedFallback="#4FFF86" />
   <widget source="ServiceEvent" render="Label" position="30,532" size="720,30" foregroundColor="unffff00" font="Regular;26" valign="center" halign="center" transparent="1" zPosition="1">
     <convert type="TransponderInfo">NoRoot</convert>
   </widget>
@@ -1065,7 +1067,12 @@
 
 	<screen name="PVRState" position="192,172" size="225,45" backgroundColor="transparent" zPosition="2" flags="wfNoBorder">
 		<widget name="state" position="0,0" size="225,45" foregroundColor="unffff00" backgroundColor="transparent" borderWidth="2" font="Regular;37" borderColor="black" halign="left"/>
-	</screen>
+	 <widget name="stateicon" position="160,915" size="90,90" alphatest="blend" zPosition="10"/>
+   <widget name="statespeedtext" foregroundColor="white" halign="left" position="260,960" size="90,45" font="Bold; 40" transparent="1"/> 
+   <widget name="statetext"  foregroundColor="white" halign="left" position="260,960" size="90,45" font="Bold; 40" transparent="1"/>
+   <widget name="statespeed" foregroundColor="white" halign="left" position="260,960" size="90,45" font="Bold; 40" transparent="1"/> 
+   <widget name="stateicon"  position="260,960" size="90,45" alphatest="blend" pixmaps="icons/pvr/ff.svg,icons/pvr/rew.svg,icons/pvr/play.svg,icons/pvr/pause.svg"/>  
+   </screen>
 
 	<!-- Timeshift state -->
 
@@ -1365,47 +1372,19 @@
 
 	<screen name="PluginBrowser" position="fill" flags="wfNoBorder">
 		<panel name="PigTemplate"/>
+			<panel name="WeerTemplate"/>
 		<panel name="KeyInfoTemplate"/>
 		<ePixmap pixmap="skin_default/buttons/key_prev.png" alphatest="blend" position="30,1031" size="52,38"/>
 		<ePixmap pixmap="skin_default/buttons/key_next.png" alphatest="blend" position="82,1031" size="52,38"/>
 		<ePixmap pixmap="skin_default/buttons/key_0.png" alphatest="blend" position="135,1031" size="52,38"/>
 		<widget name="list" position="780,100" size="1110,912" selectionPixmap="Pd1loi-HD-night/buttons/sel2.png" scrollbarMode="showOnDemand"/>
-		  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%H</convert>
-  </widget>
-  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%M</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular; 26" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
-    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
-  </widget>
-  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
-    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
-    <convert type="MSNWeather">temperature_current</convert>
-  </widget>
-	</screen>
+  </screen>
 
 	<screen name="PluginDownloadBrowser"  position="fill" flags="wfNoBorder">
 		<panel name="PigTemplate"/>
+			<panel name="WeerTemplate"/>
 		<widget name="text" position="780,105" size="1110,75" zPosition="-1" transparent="1" font="Regular;32" valign="center" halign="center"/>
 		<widget name="list" position="780,100" size="1110,912" zPosition="3" transparent="0" selectionPixmap="Pd1loi-HD-night/buttons/sel2.png" scrollbarMode="showOnDemand"/>
-     <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%H</convert>
-  </widget>
-  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%M</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular; 26" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
-    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
-  </widget>
-  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
-    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
-    <convert type="MSNWeather">temperature_current</convert>
-  </widget>
 	</screen>
 
 	<screen name="FileBrowser" title="DVD File Browser" position="fill" flags="wfNoBorder">
@@ -1506,25 +1485,11 @@
 		<widget source="status" render="Label" position="780,163" size="1110,70" backgroundColor="darkgrey" transparent="1" font="Regular;32"/>
 		<widget name="slider" position="780,440" size="1110,10" zPosition="2" transparent="1" foregroundColor="unff0000" />
     <widget name="activityslider" position="0,1024" size="1920,6" pixmap="Pd1loi-HD-night/window/slider100.png" transparent="1" zPosition="2"/>
-      <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%H</convert>
-  </widget>
-  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%M</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular; 26" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
-    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
-  </widget>
-  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
-    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
-    <convert type="MSNWeather">temperature_current</convert>
-  </widget>
-	</screen>
+    </screen>
 
 	<screen name="UpdatePluginMenu" title="Softwaremanager" position="fill" flags="wfNoBorder">
 		<panel name="PigTemplate"/>
+		<panel name="WeerTemplate"/>
 		<panel name="KeyMenuTemplate"/>
 		<panel name="KeyInfoTemplate"/>
 		<widget source="menu" render="Listbox" position="780,105" selectionPixmap="Pd1loi-HD-night/buttons/sel2.png" size="1110,900" zPosition="3" transparent="1" enableWrapAround="1" scrollbarMode="showOnDemand">
@@ -2413,22 +2378,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 
 	<screen name="About" position="fill" flags="wfNoBorder">
 		<panel name="PigTemplate"/>
-	        <widget name="AboutScrollLabel" font="Regular;30" position="780,100" size="1110,912" zPosition="2" split="1" dividechar=":" colposition="0"/>
-  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%H</convert>
-  </widget>
-  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
-    <convert type="ClockToText">Format:%M</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular; 26" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
-    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
-  </widget>
-  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
-    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
-  </widget>
-  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
-    <convert type="MSNWeather">temperature_current</convert>
-  </widget>
+		<panel name="WeerTemplate"/>
+  <widget name="AboutScrollLabel" font="Regular;30" position="780,100" size="1110,912" zPosition="2" split="1" dividechar=":" colposition="0"/>
 	</screen>
 	
 	<!-- Memory Info -->
@@ -2633,8 +2584,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	<!-- RDS InfoDisplay -->
 
 <screen name="RdsInfoDisplay" position="0,780" size="1920,300" backgroundColor="transparent" zPosition="-2" flags="wfNoBorder">
-   <widget position="22,53" size="1875,100" backgroundColor="transparent" transparent="1" zPosition="1" foregroundColor="white" borderWidth="4" font="Regular; 46" borderColor="black" valign="center" halign="center" name="RadioText" />
-  <widget position="22,157" size="1875,100" backgroundColor="transparent" transparent="1" zPosition="1" foregroundColor="white" borderWidth="4" font="Regular; 46" borderColor="black" valign="center" halign="center" name="RtpText" />
+   <widget position="22,53" size="1875,100" backgroundColor="transparent" transparent="1" zPosition="1" foregroundColor="white" borderWidth="1" font="Regular; 46" borderColor="black" valign="center" halign="center" name="RadioText" />
+  <widget position="22,157" size="1875,100" backgroundColor="transparent" transparent="1" zPosition="1" foregroundColor="white" borderWidth="1" font="Regular; 46" borderColor="black" valign="center" halign="center" name="RtpText" />
   <widget position="0,0" size="0,0" name="RassLogo" />
 </screen>
 	

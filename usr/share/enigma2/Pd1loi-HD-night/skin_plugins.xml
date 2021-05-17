@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skin>
-  <!-- slmanager -->  
+     <!-- slmanager -->  
 <screen name="slManager" position="fill" title="Sat-Lodge Panel" flags="wfNoBorder">
   <panel name="PigTemplate" />
   <panel name="ButtonTemplate" />
@@ -548,6 +548,267 @@
 
 <!-- SATLODGE PANEL END -->
 
+   <!-- OscamStatus -->
+  <screen name="OscamStatus" position="fill" title="Oscam Status" flags="wfNoBorder">
+  <panel name="PigTemplate" />
+  <widget source="menu" render="Listbox" position="780,108" size="1110,700" scrollbarMode="showOnDemand" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" itemHeight="40" transparent="1" zPosition="5">
+  <convert type="TemplatedMultiContent">
+  {"template": [
+	MultiContentEntryPixmapAlphaTest(pos = (5, 5), size = (0, 0), png = 0),
+	MultiContentEntryText(pos = (10, 0), size = (800, 50), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+	],
+	"fonts": [gFont("Regular", 32)],
+	"itemHeight": 50
+	}
+</convert>
+    </widget>
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+  </screen>
+ 
+  <screen name="globalsConfigScreen" position="fill" title="Oscam Config" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <widget name="status" position="230,1150" size="810,50" font="Regular; 30" halign="center" valign="center" backgroundColor="#101010" transparent="0" zPosition="5" />
+    <widget name="config" position="780,108" size="1110,700" font="Regular; 30" itemHeight="50" scrollbarMode="showOnDemand" scrollbarWidth="10" enableWrapAround="1" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" transparent="1" zPosition="5" />
+  </screen>
+  
+  <screen name="StatusDataScreen" Title="StatusDataScreen" position="fill" flags="wfNoBorder">
+    <panel name="BasicTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="1" />
+  <widget render="Label" source="label0" position="62,108" size="250,40" font="Regular;28" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" />
+  <widget render="Label" source="label1" position="372,108" size="300,40" font="Regular;28" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" />
+  <widget render="Label" source="label2" position="726,108" size=" 50,40" font="Regular;28" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" />
+  <widget render="Label" source="label3" position="760,108" size="231,40" font="Regular;28" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" halign="center" />  <widget render="Label" source="label4" position="1025,108" size="300,40" font="Regular;26" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" />
+  <widget render="Label" source="label5" position="1278,108" size="250,40" font="Regular;28" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" />
+        <widget source="data" render="Listbox" position="60,160" size="1820,800" scrollbarMode="showOnDemand" scrollbarWidth="10" transparent="1" zPosition="5" selectionPixmap="Pd1loi-HD-night/buttons/sel7.png">
+      <convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos = (  5, 5), size = (250, 40), font=0, flags = RT_HALIGN_LEFT, text = 0),
+					MultiContentEntryText(pos = (315, 5), size = (350, 40), font=0, flags = RT_HALIGN_LEFT, text = 1),
+					MultiContentEntryPixmapAlphaTest(pos = (675, 13), size = (40, 40), png = 2),
+					MultiContentEntryText(pos = (770, 5), size = (200, 40), font=0, flags = RT_HALIGN_LEFT, text = 3),
+					MultiContentEntryText(pos = (965, 5), size = (980, 40), font=0, flags = RT_HALIGN_LEFT, text = 4),
+				],
+				"fonts": [gFont("Regular", 26)],
+				"itemHeight": 40
+				}
+			</convert>
+    </widget>
+    <widget name="ButtonYellow" pixmap="Pd1loi-HD-night/buttons/yellow.png" position="1064,1032" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonYellowtext" position="1114,1030" size="370,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="yellow" backgroundColor="bluette" zPosition="5" />
+    <widget name="ButtonBlue" pixmap="Pd1loi-HD-night/buttons/blue.png" position="1500,1032" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonBluetext" position="1550,1030" size="370,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="blue" backgroundColor="bluette" zPosition="5" />
+  </screen>
+  <!-- Clients DataScreen -->
+  <screen name="ClientDataScreen" position="fill" title="ClientDataScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <widget name="progress" zPosition="4" position="240,554" size="15,117" transparent="1" borderColor="#404040" borderWidth="1" orientation="orBottomToTop" />
+    <widget render="Label" source="lprotocol" position="882,108" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="protocol" position="1203,108" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lprotocolext" position="882,143" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="protocolext" position="1203,143" size="690,80" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lau" position="882,223" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="au" position="1203,223" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lcaid" position="882,273" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="caid" position="1203,273" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lsrvid" position="882,313" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="srvid" position="1203,313" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lecmtime" position="882,353" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="ecmtime" position="1203,353" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lecmhistory" position="882,393" size="300,80" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="historymax" position="1203,393" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="historymin" position="1472,393" size="300,40" font="Regular;32" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lanswered" position="882,473" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="answered" position="1203,473" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lservice" position="882,513" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="service" position="1203,513" size="690,90" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="llogin" position="882,603" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="login" position="1203,603" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lonline" position="882,643" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="online" position="1203,643" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lidle" position="882,683" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="idle" position="1203,683" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lip" position="882,723" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="ip" position="1203,723" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lport" position="882,763" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="port" position="1203,763" size="690,40" font="Regular;32" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lconnection" position="882,803" size="300,40" font="Regular;32" foregroundColor="ltbluette" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="connection" position="1203,803" size="690,40" font="Regular;32" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+  </screen>
+ 
+  <screen name="UserstatsScreen" position="fill" title="UserstatsScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+  <widget render="Label" source="label0" position="817,102" size="220,30" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" font="Regular;27" />
+  <widget render="Label" source="label1" position="1079,102" size="220,30" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" font="Regular;27" />
+  <widget render="Label" source="label2" position="1347,102" size="235,30" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" font="Regular;27" halign="left" />
+  <widget render="Label" source="label3" position="1729,102" size="200,30" valign="center" zPosition="5" transparent="0" foregroundColor="unffff00" backgroundColor="background" font="Regular;27" halign="center" />
+      <widget source="data" render="Listbox" position="780,140" size="1110,775" scrollbarMode="showOnDemand" scrollbarWidth="10" enableWrapAround="1" transparent="1" zPosition="5" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png"><convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaTest(pos = (8, 14), size = (25, 25), png = 0),
+					MultiContentEntryText(pos = ( 40, 5), size = (260, 40), font=0, flags = RT_HALIGN_LEFT, text = 1),
+					MultiContentEntryText(pos = (300, 5), size = (250, 40), font=0, flags = RT_HALIGN_LEFT, text = 2),
+					MultiContentEntryText(pos = (570, 5), size = (300, 40), font=0, flags = RT_HALIGN_LEFT, text = 3),
+					MultiContentEntryText(pos = (1000, 5), size = (290, 40), font=0, flags = RT_HALIGN_LEFT, text = 4),
+				],
+				"fonts": [gFont("Regular", 26)],
+				"itemHeight": 40
+				}
+			</convert>
+    </widget>
+    <widget name="ButtonRed" position="192,1032" pixmap="Pd1loi-HD-night/buttons/red.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonRedtext" position="242,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="red" backgroundColor="background" zPosition="5" />
+    <widget name="ButtonGreen" position="628,1032" pixmap="Pd1loi-HD-night/buttons/green.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonGreentext" position="678,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="green" backgroundColor="background" zPosition="5" />
+  </screen>
+  <!-- StatusReader -->
+  <screen name="ReaderstatsScreen" position="fill" title="ReaderstatsScreen" flags="wfNoBorder">
+    <panel name="BasicTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <eLabel position="0,30" size="1920,70" backgroundColor="background" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="1" />
+    <widget source="label0" render="Label" position=" 65,110" size="120,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="label1" render="Label" position="180,110" size="700,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="label2" render="Label" position="910,110" size="230,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="label3" render="Label" position="1150,110" size="220,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="label4" render="Label" position="1380,110" size="220,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="label5" render="Label" position="1600,110" size="225,50" font="Regular;30" valign="center" foregroundColor="ltbluette" backgroundColor="background" transparent="1" zPosition="5" />
+    <widget source="data" render="Listbox" position="58,170" size="1800,680" scrollbarMode="showOnDemand" scrollbarWidth="10" transparent="1" zPosition="5" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png">
+      <convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos = (5, 5), size = (120, 40), font=0, flags = RT_HALIGN_LEFT, text = 0),
+					MultiContentEntryText(pos = (120, 5), size = (700, 40), font=0, flags = RT_HALIGN_LEFT, text = 1),
+					MultiContentEntryText(pos = (850, 5), size = (230, 40), font=0, flags = RT_HALIGN_LEFT, text = 2),
+					MultiContentEntryText(pos = (1090, 5), size = (220, 40), font=0, flags = RT_HALIGN_LEFT, text = 3),
+					MultiContentEntryText(pos = (1320, 5), size = (220, 40), font=0, flags = RT_HALIGN_LEFT, text = 4),
+					MultiContentEntryText(pos = (1540, 5), size = (220, 40), font=0, flags = RT_HALIGN_LEFT, text = 5),
+					MultiContentEntryPixmapAlphaTest(pos = (5, 5), size = (50, 30), png = 6),
+				],
+				"fonts": [gFont("Regular", 28)],
+				"itemHeight": 40
+				}
+			</convert>
+    </widget>
+    <widget render="Label" source="lEMMerror" position="227,858" size="290,80" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="ltbluette" backgroundColor="#000000" font="Regular;28" />
+    <widget render="Label" source="lEMMwritten" position="640,858" size="290,80" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="ltbluette" backgroundColor="#000000" font="Regular;28" />
+    <widget render="Label" source="lEMMskipped" position="1040,858" size="290,80" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="ltbluette" backgroundColor="#000000" font="Regular;28" />
+    <widget render="Label" source="lEMMblocked" position="1440,858" size="290,80" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="ltbluette" backgroundColor="#000000" font="Regular;28" />
+    <widget name="EMMerror" position="227,939" size="290,70" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="white" backgroundColor="#000000" font="Regular;28" />
+    <widget name="EMMwritten" position="640,939" size="290,70" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="white" backgroundColor="#000000" font="Regular;28" />
+    <widget name="EMMskipped" position="1040,939" size="290,70" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="white" backgroundColor="#000000" font="Regular;28" />
+    <widget name="EMMblocked" position="1440,939" size="290,70" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="white" backgroundColor="#000000" font="Regular;28" />
+  </screen>
+  
+  <screen name="ReaderlistScreen" position="fill" title="ReaderlistScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+  <widget render="Label" source="label0" position="826,102" size="300,40" halign="left" valign="center" zPosition="5" foregroundColor="yellow" backgroundColor="background" font="Regular;28" transparent="0" />
+  <widget render="Label" source="label1" position="1260,102" size="250,40" halign="left" valign="center" zPosition="5" foregroundColor="yellow" backgroundColor="background" font="Regular;28" transparent="0" />
+  <widget render="Label" source="label2" position="1522,102" size="108,40" halign="left" valign="center" zPosition="5" foregroundColor="yellow" backgroundColor="background" font="Regular;28" transparent="0" />
+   <widget source="data" render="Listbox" position="780,156" size="1110,720" scrollbarMode="showOnDemand" scrollbarWidth="10" enableWrapAround="1" transparent="1" zPosition="5" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png">
+      <convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaTest(pos = (10, 15), size = (30, 30), png = 0),
+					MultiContentEntryText(pos = ( 50, 2), size = (400, 40), font=0, flags = RT_HALIGN_LEFT, text = 1),
+					MultiContentEntryText(pos = (480, 2), size = (250, 40), font=0, flags = RT_HALIGN_LEFT, text = 2),
+					MultiContentEntryText(pos = (750, 2), size = ( 50, 40), font=0, flags = RT_HALIGN_LEFT, text = 3),
+				],
+				"fonts": [gFont("Regular", 30)],
+				"itemHeight": 40
+				}
+		</convert>
+    </widget>
+    <widget name="ButtonRed" position="192,1032" pixmap="Pd1loi-HD-night/buttons/red.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonRedtext" position="242,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="red" backgroundColor="background" zPosition="5" />
+    <widget name="ButtonGreen" position="628,1032" pixmap="Pd1loi-HD-night/buttons/green.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonGreentext" position="678,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="green" backgroundColor="background" zPosition="5" />
+    </screen>
+    <!-- LogData -->
+    <screen name="LogDataScreen" position="fill" title="LogDataScreen" flags="wfNoBorder">
+    <panel name="BasicTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <eLabel position="0,130" size="1920,3" backgroundColor="#202020" />
+    <widget name="data" position="40,140" size="1860,850" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="25" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" backgroundColorSelected="barColor" />
+    </screen>
+    <!-- OSCAM OscamDataScreen 014/13 -->
+    <screen name="OscamDataScreen" position="fill" title="OscamDataScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <widget render="Label" source="lversion" position="780,108" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="version" position="968,108" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lrevision" position="780,154" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="revision" position="968,154" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lstarttime" position="780,200" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="starttime" position="968,200" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="luptime" position="780,256" size="200,80" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="uptime" position="968,256" size="550,80" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lreadonly" position="780,356" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="readonly" position="968,356" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+  </screen>
+  <!-- Restart -->
+  <screen name="OscamRestartScreen" position="fill" title="OscamRestartScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <widget render="Label" source="title" position="30,7" size="870,75" valign="center" zPosition="5" transparent="1" foregroundColor="orange1" font="Regular;36" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <widget render="Label" source="lversion" position="780,108" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="version" position="970,108" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lrevision" position="780,162" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="revision" position="970,162" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lstarttime" position="780,213" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="starttime" position="970,213" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="luptime" position="780,265" size="200,80" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="uptime" position="970,265" size="550,80" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="lreadonly" position="780,355" size="200,40" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget render="Label" source="readonly" position="970,355" size="550,40" font="Regular;30" foregroundColor="white" backgroundColor="#000000" transparent="1" zPosition="5" />
+    <widget name="ButtonYellow" position="1064,1032" pixmap="Pd1loi-HD-night/buttons/yellow.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget name="ButtonYellowtext" position="1114,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="yellow" backgroundColor="bluette" zPosition="5" />
+    <widget name="ButtonBlue" position="1503,1035" pixmap="Pd1loi-HD-night/buttons/blue.png" size="30,30" alphatest="blend" zPosition="5" />
+    <widget name="ButtonBluetext" position="1550,1031" size="300,40" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="blue" backgroundColor="bluette" zPosition="5" />
+  </screen>
+  <!-- ServerEntryesListConfig -->
+  <screen name="OscamServerEntriesListConfigScreen" position="fill" title="Oscam Config" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <ePixmap position="920,10" size="80,80" pixmap="Pd1loi-HD-night/icons/oscam.png" alphatest="blend" scale="1" zPosition="5" />
+    <widget name="list" position="778,108" size="1110,750" font="Regular;32" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="50" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" />
+    <eLabel position="780,867" size="1110,3" backgroundColor="#303030" zPosition="1" />
+    <ePixmap name="ButtonGreen" position="628,1032" pixmap="Pd1loi-HD-night/buttons/green.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget source="ButtonGreentext" render="Label" position="678,1030" size="250,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="green" backgroundColor="bluette" zPosition="5" />
+    <ePixmap name="ButtonBlue" position="1500,1032" pixmap="Pd1loi-HD-night/buttons/blue.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget source="ButtonBluetext" render="Label" position="1550,1030" size="350,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="blue" backgroundColor="bluette" zPosition="5" />
+    <ePixmap name="ButtonYellow" position="1064,1032" pixmap="Pd1loi-HD-night/buttons/yellow.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget source="ButtonYellowtext" render="Label" position="1114,1030" size="300,38" zPosition="5" font="Regular;30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1" />
+  </screen>
+  <!-- ServerEntryesConfig-->
+  <screen name="OscamServerEntryConfigScreen" position="fill" title="OscamServerEntryConfigScreen" flags="wfNoBorder">
+    <panel name="PigTemplate" />
+    <panel name="KeyInfoTemplate" />
+    <panel name="KeyMenuTemplate" />
+    <widget name="config" position="780,108" size="1110,750" font="Regular;32" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="50" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" />
+    <ePixmap name="ButtonRed" position="192,1032" pixmap="Pd1loi-HD-night/buttons/red.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget source="ButtonRedtext" render="Label" position="242,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="red" backgroundColor="#000000" zPosition="5" />
+    <ePixmap name="ButtonGreen" position="628,1032" pixmap="Pd1loi-HD-night/buttons/green.png" size="34,34" alphatest="blend" zPosition="5" />
+    <widget source="ButtonGreentext" render="Label" position="678,1030" size="300,38" font="Regular;32" halign="left" valign="center" transparent="1" foregroundColor="green" backgroundColor="#000000" zPosition="5" />
+  </screen>
 <screen name="fmConfiguration" position="fill" flags="wfNoBorder" title="Font Magnifier">
   <panel name="PigTemplate" />
   <widget name="config" position="780,110" size="1110,500" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" itemHeight="45" font="Regular; 30" scrollbarMode="showOnDemand" zPosition="1" />
@@ -568,6 +829,47 @@
   </widget>
 </screen>
 
+ <!--RSS NewsReader-->
+  
+ <screen flags="wfNoBorder" name="FeedScreenList" position="fill"  title="PLi RSS Reader">
+  <panel name="BasicTemplate" />
+ <widget name="menu" position="30,100" scrollbarMode="showOnDemand" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" size="1860,912" font="Regular;32" itemHeight="47" transparent="1" />
+ <ePixmap pixmap="skin_default/buttons/key_ok.png" alphatest="blend" position="30,1031" size="52,38"/>
+ </screen>
+ 
+<screen name= "FeedreaderMenuMain" position="fill"  title="PLi RSS Reader Menu Main" >
+  <panel name="PigTemplate" />
+  <ePixmap pixmap="skin_default/buttons/key_ok.png" alphatest="blend" position="30,1031" size="52,38"/>
+   <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="65,821" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
+    <convert type="ClockToText">Format:%H</convert>
+  </widget>
+  <widget backgroundColor="darkgrey" font="Regular;39" halign="center" render="Label" position="134,819" size="79,45" source="global.CurrentTime" transparent="1" valign="center" zPosition="1" foregroundColor="darkgrey">
+    <convert type="ClockToText">Format:%M</convert>
+  </widget>
+  <widget backgroundColor="background" font="Regular; 28" foregroundColor="unffff00" halign="center" position="41,919" size="300,45" render="Label" source="global.CurrentTime" transparent="1" valign="top" zPosition="1">
+    <convert type="ClockToText">Format:%A, %d.%m.%Y</convert>
+  </widget>
+  <widget alphatest="blend" position="41,734" size="300,183" render="MSNWeatherPixmap" source="session.MSNWeather" transparent="0">
+    <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Pd1loi-HD-night/clock/,png</convert>
+  </widget>
+  <widget backgroundColor="background" font="Regular2; 30" foregroundColor="darkgrey" halign="center" position="180,863" render="Label" size="150,37" source="session.MSNWeather" transparent="1" zPosition="1" valign="top">
+    <convert type="MSNWeather">temperature_current</convert>
+  </widget> 
+  <widget name="menu" position="780,105" scrollbarMode="showOnDemand" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" size="1110,910" font="Regular;32" itemHeight="47" transparent="1" />
+ </screen> 
+ 
+ <screen name= "FeedScreenContent" position="fill"  title="PLi RSS Reader Content" >
+    <panel name="BasicTemplate" />
+    <ePixmap pixmap="skin_default/buttons/key_ok.png" alphatest="blend" position="30,1031" size="52,38"/>
+  <widget name="menu" position="30,100" scrollbarMode="showOnDemand" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" size="1860,912" font="Regular;32" itemHeight="47" transparent="1" />
+ </screen> 
+  
+ <screen name= "FeedScreenItemviewer" position="fill"  title="PLi RSS ItemViewer" >
+    <panel name="BasicTemplate" />
+    <ePixmap pixmap="skin_default/buttons/key_ok.png" alphatest="blend" position="30,1031" size="52,38"/>
+   <widget name="text" position="30,100" size="1860,912" font="Regular;32" itemHeight="47" />
+ </screen>
+  
   
 	<!-- ZapHistoryBrowser -->
   <screen name="ZapHistoryBrowser" position="fill" title="ZapHistoryBrowser">
@@ -598,7 +900,7 @@
 </screen>
  <!-- EPGImportFilter -->
 <screen name="filtersServicesSelection" position="fill" title="Channel Selection">
-<panel name="PigTemplate" />
+<panel name="PigTemplate" />		
 <widget name="list" position="780,110" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" scrollbarMode="showOnDemand" size="1110,900" />
 </screen>
 <screen name="EPGImportFilterScreen" position="fill" zPosition="2" title="EPGImport Filter">
@@ -623,34 +925,6 @@
 <widget name="size" position="30,560" size="720,100" font="Regular;30" zPosition="1" backgroundColor="#00000000" />
 <widget name="HelpWindow" position="center,670" size="120,0" />
 </screen>
-
-<screen name="EPGImportSources" position="fill" title="EPG Import Sources">
-  <panel name="PigTemplate" />
-  <widget name="list" position="780,110" size="1110,900" font="Regular; 32" itemHeight="38" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" scrollbarMode="showOnDemand" />
-</screen>
-
-<screen name="EPGImportLog" position="fill" title="EPG Import Log">
-  <panel name="PigTemplate" />
-  <widget name="list" font="Regular; 32" itemHeight="38" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" position="782,110" size="1110,900" />
-</screen>
-
-<screen name="EPGImportConfig" position="fill" title="EPG Import Configuration">
-  <panel name="PigTemplate" />
-  <widget name="config" position="780,110" size="1110,700" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" scrollbarMode="showOnDemand" font="Regular; 32" itemHeight="38" />
-  <widget name="statusbar" position="30,547" size="700,40" font="Regular;32" />
-  <widget name="status" position="30,604" size="700,40" font="Regular; 32" />
-</screen>
-
-<screen name="EPGImportSources" position="fill" title="EPG Import Sources">
-  <panel name="PigTemplate" />
-  <widget name="list" position="780,110" size="1110,900" font="Regular; 32" itemHeight="38" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" scrollbarMode="showOnDemand" />
-</screen>
-
-<screen name="EPGImportProfile" position="fill" title="EPGImportProfile">
- <panel name="PigTemplate" />
-  <widget name="config" font="Regular; 32" itemHeight="38" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" position="780,110" size="1110,900" scrollbarMode="showOnDemand" />
- </screen>
-
 
 <!-- WeatherMSN -->
 
@@ -1822,18 +2096,18 @@
   <widget name="coverArt" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MerlinMusicPlayer/images/no_coverArt.png" position="60,743" size="238,238" transparent="1" alphatest="blend" />
   <widget name="display" position="60,982" size="1800,40" zPosition="1" transparent="1" font="Regular;28" foregroundColor="unfcc000" />
 </screen>
- <screen name="MerlinMusicPlayerSongList" position="fill" flags="wfNoBorder" backgroundColor="#00000000" title="Songlist">
+
+<screen flags="wfNoBorder" name="MerlinMusicPlayerSongList" position="fill" title="Songlist">
 <panel name="BasicTemplate" />
 <panel name="PigTemplate"/>
-<ePixmap alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MerlinMusicPlayer/images/mmpborderHD.png" position="780,150" size="1110,576" />
 <eLabel backgroundColor="#999999" position="1130,120" size="410,6" zPosition="1" />
 <eLabel backgroundColor="#999999" font="Regular; 20" foregroundColor="#0f0f0f" halign="center" position="779,108" size="350,30" text="MERLIN  MUSIC  PLAYER" valign="center" zPosition="2" />
 <eLabel backgroundColor="#999999" font="Regular; 20" foregroundColor="#0f0f0f" halign="center" position="1541,108" size="350,30" text="WWW.DREAMBOX-TOOLS.INFO" valign="center" zPosition="2" />
 <widget name="headertext" position="30,535" zPosition="1" size="700,40" font="Regular; 32" transparent="1" foregroundColor="unffff00" backgroundColor="#00000000" />
-<widget name="list" position="808,173" zPosition="2" size="1051,535" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" font="Regular; 30" scrollbarMode="showOnDemand" transparent="0" backgroundColor="#00000000" itemHeight="35" />
+<widget name="list" position="780,150" zPosition="1" size="1110,860" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" font="Regular; 30" scrollbarMode="showOnDemand" transparent="1" itemHeight="35" />
 </screen>
 
-<screen name="iDreamAddToDatabase" position="center,center" size="1920,1080" title="Add music files to iDream database" flags="wfNoBorder">
+<screen name="iDreamAddToDatabase" position="fill" size="1920,1080" title="Add music files to iDream database" flags="wfNoBorder">
   <ePixmap pixmap="Pd1loi-HD-night/buttons/red.png" position="192,1032" size="34,34" alphatest="blend" />
   <ePixmap pixmap="Pd1loi-HD-night/buttons/green.png" position="628,1032" size="34,34" alphatest="blend" />
   <ePixmap pixmap="Pd1loi-HD-night/buttons/yellow.png" position="1064,1032" size="34,34" alphatest="blend" />
@@ -2420,6 +2694,7 @@
 		<widget name="config" position="780,105" size="1110,600" itemHeight="38" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" font="Regular;30" scrollbarMode="showOnDemand"/>
 		<widget name="statusbar" position="780,975" size="1110,34" font="Regular;30"/>
 		<widget name="status" position="780,780" size="1110,90" font="Regular;30"/>
+		<widget name="description" position="30,570" size="720,300" itemHeight="38" font="Regular;32" valign="top"/>
 	</screen>
 
 	<!-- EPG Import Profile -->
@@ -2924,7 +3199,7 @@
 
 	<screen name="CacheFlushSetupMenu" position="fill" flags="wfNoBorder">
 		<panel name="PigTemplate"/>
-		<widget name="config" position="780,105" size="1110,375" itemHeight="38" font="Regular;28" zPosition="1" scrollbarMode="showOnDemand"/>
+		<widget name="config" position="780,105" size="1110,375" itemHeight="38" font="Regular;28" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" zPosition="1" scrollbarMode="showOnDemand"/>
 		<widget name="min_free_kb" position="795,712" size="900,37" font="Regular;27" zPosition="1" valign="center" transparent="1"/>
 		<widget name="slide" position="1755,765" size="27,150" zPosition="1" borderWidth="1" backgroundColor="secondBG" orientation="orBottomToTop"/>
 		<widget name="memory" position="795,885" size="900,37" zPosition="1" valign="center" halign="left" font="Regular;33" transparent="1"/>
@@ -3627,7 +3902,7 @@
 		<widget name="statusbar" position="7,900" size="765,110" font="Regular;27" halign="center" valign="bottom"/>
 		<widget name="poster" position="780,123" size="165,270" alphatest="blend"/>
 		<widget name="detailslabel" position="960,123" size="945,270" font="Regular;30" halign="center"/>
-		<widget name="menu" position="780,213" size="1132,765" font="Regular;33" itemHeight="45" scrollbarMode="showOnDemand" zPosition="3" enableWrapAround="1" foregroundColor="grey"/>
+		<widget name="menu" position="780,213" size="1132,765" font="Regular;33" itemHeight="45" selectionPixmap="Pd1loi-HD-night/buttons/sel4.png" scrollbarMode="showOnDemand" zPosition="3" enableWrapAround="1" foregroundColor="grey"/>
 		<widget name="castlabel" position="780,397" size="1132,610" font="Regular;33" foregroundColor="grey"/>
 		<widget name="extralabel" position="735,123" size="1177,855" font="Regular;33" foregroundColor="grey"/>
 	</screen>
