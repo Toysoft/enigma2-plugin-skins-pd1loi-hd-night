@@ -21,6 +21,7 @@
 #
 
 # for localized messages
+from __future__ import print_function
 from . import _
 
 from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, \
@@ -35,7 +36,11 @@ from Components.config import ConfigSubsection, ConfigText, ConfigSelection, \
 	getConfigListEntry, config, configfile
 from xml.etree.cElementTree import fromstring as cet_fromstring
 from twisted.web.client import getPage
-from urllib import quote as urllib_quote
+import six
+if six.PY2:
+	from urllib import quote as urllib_quote
+else:
+	from urllib.parse import quote as urllib_quote
 
 def initWeatherPluginEntryConfig():
 	s = ConfigSubsection()
@@ -75,7 +80,7 @@ class MSNWeatherPluginEntriesListConfigScreen(Screen):
 		self["city"] = StaticText(_("City"))
 		self["degreetype"] = StaticText(_("System"))
 		self["key_red"] = StaticText(_("Back"))
-		self["key_green"] = StaticText(_("Add"))		
+		self["key_green"] = StaticText(_("Add"))
 		self["key_yellow"] = StaticText(_("Edit"))
 		self["key_blue"] = StaticText(_("Delete"))
 		self["entrylist"] = WeatherPluginEntryList([])
@@ -84,7 +89,7 @@ class MSNWeatherPluginEntriesListConfigScreen(Screen):
 			 "ok"	:	self.keyOK,
 			 "back"	:	self.keyClose,
 			 "red"	:	self.keyClose,
-			 "green":	self.keyGreen,			 
+			 "green":	self.keyGreen,
 			 "yellow":	self.keyYellow,
 			 "blue": 	self.keyDelete,
 			 }, -1)
@@ -199,9 +204,8 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 			getConfigListEntry(_("Location code"), self.current.weatherlocationcode),
 			getConfigListEntry(_("System"), self.current.degreetype)
 		]
-
 		ConfigListScreen.__init__(self, cfglist, session)
-		
+
 	def searchLocation(self):
 		if self.current.city.value != "":
 			language = config.osd.language.value.replace("_","-")
@@ -210,7 +214,7 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 			elif language == "no-NO": # hack
 				language = "nn-NO"
 			url = "http://weather.service.msn.com/find.aspx?src=vista&outputview=search&weasearchstr=%s&culture=%s" % (urllib_quote(self.current.city.value), language)
-			getPage(url).addCallback(self.xmlCallback).addErrback(self.error)
+			getPage(six.ensure_binary(url)).addCallback(self.xmlCallback).addErrback(self.error)
 		else:
 			self.session.open(MessageBox, _("You need to enter a valid city name before you can search for the location code."), MessageBox.TYPE_ERROR)
 
@@ -237,7 +241,7 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 	def keyDelete(self):
 		if self.newmode == 1:
 			self.keyCancel()
-		else:		
+		else:
 			self.session.openWithCallback(self.deleteConfirm, MessageBox, _("Really delete this WeatherPlugin Entry?"))
 
 	def deleteConfirm(self, result):
@@ -250,32 +254,30 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 		config.plugins.WeatherPlugin.save()
 		configfile.save()
 		self.close()
-		
-		
+
 	def xmlCallback(self, xmlstring):
 		if xmlstring:
 			errormessage = ""
 			root = cet_fromstring(xmlstring)
 			for childs in root:
-				if childs.tag == "weather" and childs.attrib.has_key("errormessage"):
-					errormessage = childs.attrib.get("errormessage").encode("utf-8", 'ignore')
+				if childs.tag == "weather" and "errormessage" in childs.attrib:
+					errormessage = childs.attrib.get("errormessage")
 					break
 			if len(errormessage) !=0:
-				self.session.open(MessageBox, errormessage, MessageBox.TYPE_ERROR)					
+				self.session.open(MessageBox, errormessage, MessageBox.TYPE_ERROR)
 			else:
 				self.session.openWithCallback(self.searchCallback, MSNWeatherPluginSearch, xmlstring)
-			
+
 	def error(self, error = None):
 		if error is not None:
-			print error
-		
+			print(error)
+
 	def searchCallback(self, result):
 		if result:
 			self.current.weatherlocationcode.value = result[0]
 			self.current.city.value = result[1]
-	
-		
-		
+
+
 class MSNWeatherPluginSearch(Screen):
 	skin = """
 		<screen name="MSNWeatherPluginSearch" position="center,center" size="550,400">
@@ -314,7 +316,7 @@ class MSNWeatherPluginSearch(Screen):
 		try:sel = self["entrylist"].l.getCurrentSelection()[0]
 		except: sel = None
 		self.close(sel)
-		
+
 
 class MSNWeatherPluginSearchResultList(MenuList):
 	def __init__(self, list, enableWrapAround = True):
@@ -337,9 +339,14 @@ class MSNWeatherPluginSearchResultList(MenuList):
 		list = []
 		for childs in root:
 			if childs.tag == "weather":
-				searchlocation = childs.attrib.get("weatherlocationname").encode("utf-8", 'ignore')
-				searchresult = childs.attrib.get("weatherfullname").encode("utf-8", 'ignore')
-				weatherlocationcode = childs.attrib.get("weatherlocationcode").encode("utf-8", 'ignore')
+				if six.PY2:
+					searchlocation = childs.attrib.get("weatherlocationname").encode("utf-8", 'ignore')
+					searchresult = childs.attrib.get("weatherfullname").encode("utf-8", 'ignore')
+					weatherlocationcode = childs.attrib.get("weatherlocationcode").encode("utf-8", 'ignore')
+				else:
+					searchlocation = childs.attrib.get("weatherlocationname")
+					searchresult = childs.attrib.get("weatherfullname")
+					weatherlocationcode = childs.attrib.get("weatherlocationcode")
 				res = [
 					(weatherlocationcode, searchlocation),
 					(eListboxPythonMultiContent.TYPE_TEXT, 5, 0, 500, 50, 1, RT_HALIGN_LEFT|RT_VALIGN_CENTER, searchlocation),

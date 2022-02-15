@@ -33,8 +33,8 @@ from Components.Pixmap import Pixmap
 from enigma import ePicLoad, eRect, eSize, gPixmapPtr
 from Components.AVSwitch import AVSwitch
 from Components.config import ConfigSubsection, ConfigSubList, ConfigInteger, config
-from setup import initConfig, MSNWeatherPluginEntriesListConfigScreen
-from MSNWeather import MSNWeather
+from .setup import initConfig, MSNWeatherPluginEntriesListConfigScreen
+from .MSNWeather import MSNWeather
 import time
 
 try:
@@ -110,7 +110,7 @@ class MSNWeatherPlugin(Screen):
 		self["observationtime"] = StaticText()
 		self["observationpoint"] = StaticText()
 		self["feelsliketemp"] = StaticText()
-		
+
 		i = 1
 		while i <= 5:
 			self["weekday%s" % i] = StaticText()
@@ -118,7 +118,6 @@ class MSNWeatherPlugin(Screen):
 			self["weekday%s_temp" % i] = StaticText()
 			i += 1
 		del i
-		
 
 		self.weatherPluginEntryIndex = -1
 		self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entrycount.value
@@ -128,13 +127,12 @@ class MSNWeatherPlugin(Screen):
 		else:
 			self.weatherPluginEntry = None
 
-
 		self.webSite = ""
 		
 		self.weatherData = None
 		self.onLayoutFinish.append(self.startRun)
 		self.onClose.append(self.__onClose)
-		
+
 	def __onClose(self):
 		if self.weatherData is not None:
 			self.weatherData.cancel()
@@ -190,7 +188,7 @@ class MSNWeatherPlugin(Screen):
 			i += 1
 
 	def showIcon(self,index, filename):
-		if index <> -1:
+		if index != -1:
 			self["weekday%s_icon" % index].updateIcon(filename)
 			self["weekday%s_icon" % index].show()
 		else:
@@ -228,8 +226,10 @@ class MSNWeatherPlugin(Screen):
 
 	def config(self):
 		self.session.openWithCallback(self.setupFinished, MSNWeatherPluginEntriesListConfigScreen)
-        def showsetup(self):
-                self.session.openWithCallback(self.setupFinished, MSNWeatherPluginEntriesListConfigScreen)
+
+	def showsetup(self):
+		self.session.openWithCallback(self.setupFinished, MSNWeatherPluginEntriesListConfigScreen)
+
 	def setupFinished(self, index, entry = None):
 		self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entrycount.value
 		if self.weatherPluginEntryCount >= 1:
@@ -293,10 +293,9 @@ class WeatherIcon(Pixmap):
 			self.instance.setPixmap(ptr)
 		else:
 			self.instance.setPixmap(None)
-		
+
 	def updateIcon(self, filename):
 		new_IconFileName = filename
 		if (self.IconFileName != new_IconFileName):
 			self.IconFileName = new_IconFileName
 			self.picload.startDecode(self.IconFileName)
-
